@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="carousel" *ngIf="slides.length">
+        <ng-container *ngFor="let slide of slides; let i = index">
+            <img *ngIf="i === currentSlide" [src]="slide.src" [alt]="slide.alt" class="slide"
+            [@slideAnimation]="animationType" />
+           
+        </ng-container>
+        <div  class="control next selectable">
+            <h1><span>I</span>M<span>POSSIBLE</span></h1>
+        </div>
+        
+        <div class="control next selectable">
+            
+            <div *ngFor="let slide of slides; let i = index">
+                <a *ngIf="slide.selectable" href="{{slide.selectable.link}}">{{slide.selectable.title}}</a>
+            </div>
+        </div>
+
+        <!-- controls -->
+        <button class="control prev" (click)="onPreviousClick()">
+            <span class="arrow left"></span>
+        </button>
+        <button class="control next" (click)="onNextClick()">
+            <span class="arrow right"></span>
+        </button>
+    </div>
+</div>
