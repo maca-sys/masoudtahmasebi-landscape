@@ -1,6 +1,8 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { fadeIn, fadeOut, flipIn, flipOut, jackIn, jackOut, scaleIn, scaleOut } from '../../animations/carousel.animation';
+import { SlideModel } from '../../models/slide.model';
 
 @Component({
   selector: 'mt-slideshow',
@@ -46,8 +48,10 @@ export class MtSlideshowComponent implements OnInit {
   @Input() slides: SlideModel[] = [];
   @Input() animationType = 'scale';
   currentSlide = 0;
+  @HostBinding("style.--some-var")
+  private value: string = "Tah";
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   onPreviousClick() {
     const previous = this.currentSlide - 1;
@@ -62,8 +66,24 @@ export class MtSlideshowComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.preloadImages(); // for the demo
+    this.preloadImages();
+    if (location.hash !== "") {
+      const locationHash = this.slides.find(s => s.selectable?.link == location.hash) ? this.slides.find(s => s.selectable?.link == location.hash) : new SlideModel();
+      if (locationHash) {
+        this.currentSlide = this.slides.indexOf(locationHash);
+      }
+    }
   }
+
+  onSlideClick(slide: SlideModel) {
+    // const next = this.currentSlide + 1;
+    this.currentSlide = this.slides.indexOf(slide);
+  }
+
+  // @HostBinding("attr.style")
+  // public get valueAsStyle(): any {
+  //   return this.sanitizer.bypassSecurityTrustStyle(`--some-var: ${this.slides[this.currentSlide].alt}`);
+  // }
 
   preloadImages() {
     for (const slide of this.slides) {
@@ -72,14 +92,4 @@ export class MtSlideshowComponent implements OnInit {
   }
 
 
-}
-export class SlideModel {
-  src: string = '';
-  alt?: string = '';
-  selectable?: SelectableModel;
-}
-export class SelectableModel {
-  id?: number
-  title: string = '';
-  link?: string = '';
 }
