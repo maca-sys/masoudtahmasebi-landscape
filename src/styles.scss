@@ -4,6 +4,11 @@ body {
   box-sizing: border-box;
   background-color: #4e4e4e;
   cursor: url('./assets/img/cursor-.svg'), auto;
+  overflow: hidden;
+  position: fixed;
+  height: 100vh;  
+  height: -webkit-fill-available;
+  width: 100vw;
 }
 *,a {
   font-family: 'Yanone Kaffeesatz', sans-serif;

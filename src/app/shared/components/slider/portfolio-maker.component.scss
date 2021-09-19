@@ -1,7 +1,9 @@
 .container {
+  position: fixed;
   display: block;
   width: 100vw;
   height: 100vh;
+  height: -webkit-fill-available;
 }
 
 :host {
@@ -103,6 +105,9 @@
 .header {
   color: #ff9933;
   font-size: 50px;
+  @media (max-width:641px)  {
+    font-size: 40px;
+  }
   font-weight: bold;
   font-family: monospace;
   letter-spacing: 7px;
@@ -121,9 +126,9 @@
 .header:hover span:nth-child(1) {
   margin-right: 5px;
 }
-.header:hover span:nth-child(1):after {
-  content: var(--some-var);
-}
+// .header:hover span:nth-child(1):after {
+//   content: var(--some-var);
+// }
 .header:hover span:nth-child(2) {
   margin-left: 30px;
 }

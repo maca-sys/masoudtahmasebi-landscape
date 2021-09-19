@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
+import { SwipeDirective } from './shared/directives/swipe.directive';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { MtSlideshowComponent } from './shared/components/slider/slider.component';
+import { MtPortfolioMakerComponent } from './shared/components/slider/portfolio-maker.component';
 import { NoSanitizePipe } from './shared/pipes/no-sanitize.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MtSlideshowComponent,
+    MtPortfolioMakerComponent,
     HeaderComponent,
-    NoSanitizePipe
+    NoSanitizePipe,
+    SwipeDirective
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,18 @@
+<app-header [headerList]="header"></app-header>
 <div class="container">
     <div class="carousel" *ngIf="slides.length">
         <ng-container *ngFor="let slide of slides; let i = index">
-            <picture [@slideAnimation]="animationType" >
+            <picture [@slideAnimation]="animationType" swipe (next)="onNextClick()" (previous)="onPreviousClick()">
                 <source media="(min-width:650px)" srcset="{{slide.srcLarge? slide.srcLarge : slide.src}}">
                 <source media="(min-width:465px)" srcset="{{slide.srcMedium? slide.srcMedium : slide.src}}">
                 <img *ngIf="i === currentSlide" [src]="slide.src" [alt]="slide.alt" class="slide"
                     [@slideAnimation]="animationType" />
             </picture>
-            <div *ngIf="i === currentSlide" class="my-name-div" [style.right]="slide.x" [style.top]="slide.y" [@slideAnimation]="animationType" >
-                
-                <h1 class="header" *ngIf="slide.selectable?.title">{{slide.selectable?.title}}<span>{{slide.selectable?.titleFull}}</span></h1>
-                <!-- <h1><span>Masoud</span><span></span></h1> -->
+            <div *ngIf="i === currentSlide" class="my-name-div" [style.right]="slide.x" [style.top]="slide.y"
+                [@slideAnimation]="animationType">
+                <h1 class="header" *ngIf="slide.selectable?.title">
+                    {{slide.selectable?.title}}<span>{{slide.selectable?.titleFull}}</span></h1>
                 <p *ngIf="slide.selectable?.caption" [innerHTML]="slide.selectable?.caption | noSanitize"></p>
-                <!-- <iframe   [@slideAnimation]="animationType"  *ngIf="slide.contactSlide" allowTransparency="true" style="min-height:300px; height:inherit; overflow:hidden;" width="100%" id="contactform123" name="contactform123" marginwidth="0" marginheight="0" frameborder="0" src="https://form.123formbuilder.com/my-contact-form-5997902.html"><p>Your browser does not support iframes. The contact form cannot be displayed. Please use another contact method (phone, fax etc)</p></iframe>form.123formbuilder.com script ends here -->
             </div>
 
         </ng-container>

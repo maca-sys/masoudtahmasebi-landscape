@@ -1,4 +1,4 @@
-export class SlideModel {
+export class PortfolioModel {
     src: string = '';
     srcLarge?: string = '';
     srcMedium?: string = '';
@@ -6,7 +6,6 @@ export class SlideModel {
     selectable?: SelectableModel;
     x?: string = '';
     y?: string = '';
-    contactSlide?: string;
 }
 export class SelectableModel {
     id?: number

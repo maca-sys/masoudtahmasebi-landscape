@@ -2,12 +2,13 @@ import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { fadeIn, fadeOut, flipIn, flipOut, jackIn, jackOut, scaleIn, scaleOut } from '../../animations/carousel.animation';
-import { SlideModel } from '../../models/slide.model';
+import { PortfolioModel } from '../../models/slide.model';
+import { HeaderModel } from "../../models/header.model";
 
 @Component({
-  selector: 'mt-slideshow',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
+  selector: 'mt-portfolio',
+  templateUrl: './portfolio-maker.component.html',
+  styleUrls: ['./portfolio-maker.component.scss'],
   animations: [
     trigger("slideAnimation", [
       /* scale */
@@ -44,12 +45,11 @@ import { SlideModel } from '../../models/slide.model';
     ])
   ]
 })
-export class MtSlideshowComponent implements OnInit {
-  @Input() slides: SlideModel[] = [];
+export class MtPortfolioMakerComponent implements OnInit {
+  @Input() slides: PortfolioModel[] = [];
   @Input() animationType = 'scale';
+  @Input() header: HeaderModel[] = [];
   currentSlide = 0;
-  @HostBinding("style.--some-var")
-  private value: string = "Tah";
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -68,22 +68,18 @@ export class MtSlideshowComponent implements OnInit {
   ngOnInit() {
     this.preloadImages();
     if (location.hash !== "") {
-      const locationHash = this.slides.find(s => s.selectable?.link == location.hash) ? this.slides.find(s => s.selectable?.link == location.hash) : new SlideModel();
+      const locationHash = this.slides.find(s => s.selectable?.link == location.hash) ? this.slides.find(s => s.selectable?.link == location.hash) : new PortfolioModel();
       if (locationHash) {
         this.currentSlide = this.slides.indexOf(locationHash);
       }
     }
   }
 
-  onSlideClick(slide: SlideModel) {
+  onSlideClick(slide: PortfolioModel) {
     // const next = this.currentSlide + 1;
     this.currentSlide = this.slides.indexOf(slide);
   }
 
-  // @HostBinding("attr.style")
-  // public get valueAsStyle(): any {
-  //   return this.sanitizer.bypassSecurityTrustStyle(`--some-var: ${this.slides[this.currentSlide].alt}`);
-  // }
 
   preloadImages() {
     for (const slide of this.slides) {
