@@ -1,18 +1,18 @@
-export class PortfolioModel {
-    src: string = '';
-    srcLarge?: string = '';
-    srcMedium?: string = '';
-    alt?: string = '';
+export interface PortfolioModel {
+    src: string;
+    srcLarge?: string;
+    srcMedium?: string;
+    alt?: string;
     selectable?: SelectableModel;
-    x?: string = '';
-    y?: string = '';
+    x?: string;
+    y?: string;
 }
-export class SelectableModel {
+export interface SelectableModel {
     id?: number
-    title: string = '';
-    titleFull: string = '';
-    linkTitle: string = '';
-    caption?: string = '';
-    link?: string = '';
+    title: string;
+    titleFull: string;
+    linkTitle: string;
+    caption?: string;
+    link?: string;
 
 }

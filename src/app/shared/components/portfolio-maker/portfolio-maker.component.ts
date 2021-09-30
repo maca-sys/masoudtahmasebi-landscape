@@ -6,7 +6,7 @@ import { PortfolioModel } from '../../models/slide.model';
 import { HeaderModel } from "../../models/header.model";
 
 @Component({
-  selector: 'mt-portfolio',
+  selector: 'mt-portfolio-maker',
   templateUrl: './portfolio-maker.component.html',
   styleUrls: ['./portfolio-maker.component.scss'],
   animations: [
@@ -46,7 +46,7 @@ import { HeaderModel } from "../../models/header.model";
   ]
 })
 export class MtPortfolioMakerComponent implements OnInit {
-  @Input() slides: PortfolioModel[] = [];
+  @Input() portfolioList: PortfolioModel[] = [];
   @Input() animationType = 'scale';
   @Input() header: HeaderModel[] = [];
   currentSlide = 0;
@@ -55,34 +55,34 @@ export class MtPortfolioMakerComponent implements OnInit {
 
   onPreviousClick() {
     const previous = this.currentSlide - 1;
-    this.currentSlide = previous < 0 ? this.slides.length - 1 : previous;
+    this.currentSlide = previous < 0 ? this.portfolioList.length - 1 : previous;
     // console.log("previous clicked, new current slide is: ", this.currentSlide);
   }
 
   onNextClick() {
     const next = this.currentSlide + 1;
-    this.currentSlide = next === this.slides.length ? 0 : next;
+    this.currentSlide = next === this.portfolioList.length ? 0 : next;
     // console.log("next clicked, new current slide is: ", this.currentSlide);
   }
 
   ngOnInit() {
     this.preloadImages();
     if (location.hash !== "") {
-      const locationHash = this.slides.find(s => s.selectable?.link == location.hash) ? this.slides.find(s => s.selectable?.link == location.hash) : new PortfolioModel();
+      const locationHash = this.portfolioList.find(s => s.selectable?.link == location.hash) ? this.portfolioList.find(s => s.selectable?.link == location.hash) : null;
       if (locationHash) {
-        this.currentSlide = this.slides.indexOf(locationHash);
+        this.currentSlide = this.portfolioList.indexOf(locationHash);
       }
     }
   }
 
   onSlideClick(slide: PortfolioModel) {
     // const next = this.currentSlide + 1;
-    this.currentSlide = this.slides.indexOf(slide);
+    this.currentSlide = this.portfolioList.indexOf(slide);
   }
 
 
   preloadImages() {
-    for (const slide of this.slides) {
+    for (const slide of this.portfolioList) {
       new Image().src = slide.src;
     }
   }

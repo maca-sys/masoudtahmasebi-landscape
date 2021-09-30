@@ -44,7 +44,7 @@ export class AppComponent {
     title: 'Masoud on StackoverFlow'
   },
   ];
-  slides: PortfolioModel[] = [
+  portfolio: PortfolioModel[] = [
     {
       src: '../assets/img/1-1.jpg',
       srcLarge: '../assets/img/1-.jpg',
@@ -57,16 +57,44 @@ export class AppComponent {
     If you want the best, you must hire the best.` }
     },
     {
-      src: '../assets/img/2-2.jpg',
-      srcLarge: '../assets/img/2-.jpg',
-      srcMedium: '../assets/img/2-2.jpg',
+      src: '../assets/img/4.jpg',
+      // srcLarge: '../assets/img/2-.jpg',
+      // srcMedium: '../assets/img/2-2.jpg',
       x: '21vw',
       y: '5vh',
       alt: 'masoud tahmasebi',
       selectable: {
         id: 2, titleFull: " Me", title: "About", linkTitle: "About", link: "#about", caption: `
       <div style="line-height:2rem;">
-  Full-Stack Software Developer with main focus on Javascript (Angular) and .Net Core on various projects, with Continuous Integration and Continuous Delivery via GitLab for great companies in Germany.  Agile Team, Morning standup,And:<br>JavaScript (Angular-React-Vue)<br>AWS Services: S3, Transcribe, Search Indexing<br>.Net Core and .Net<br>GItLab, Docker DevOps<br>Databases: PostgreSQL, Oracle, MySQL and MS SQL, MongoDB.</div>` }
+  Full-Stack Software Developer with main focus on Javascript and .Net Core on various projects, with Continuous Integration and Continuous Delivery via GitLab for great companies in Germany.  Agile Team, Morning standup,And:<br>JavaScript (Angular-React-Vue)<br>AWS Services: S3, Transcribe, Search Indexing<br>.Net Core and .Net<br>GItLab, Docker DevOps<br>Databases: PostgreSQL, Oracle, MySQL and MS SQL, MongoDB.</div>` }
+    }, {
+      src: '../assets/img/3.jpg',
+      x: '40vw',
+      y: '4vh',
+      alt: 'masoud tahmasebi',
+      selectable: {
+        id: 2, titleFull: " Packages", title: "Published", linkTitle: "Packages", link: "#packages", caption: `
+      <div style="line-height:2rem;">
+      3 packages
+      <br>
+      <a  target="_blank" rel="noopener" href="https://www.npmjs.com/package/mt-portfolio"><b>mt-portfolio</b></a>
+<br>
+published 0.0.5 - A Portfolio maker for Angular with image, heading, caption, ability to add contact form and demo, Like this website :))
+
+<br>
+<a  target="_blank" rel="noopener" href="https://www.npmjs.com/package/mt-slideshow"><b>mt-slideshow</b></a>
+<br>
+published 0.0.2 - A simple Slide Show for Angular with alt for SEO
+
+<br>
+<a  target="_blank" rel="noopener" href="https://www.npmjs.com/package/mt-a-carousel"><b>mt-a-carousel</b></a>
+<br>
+published 0.0.2 - A simple Carousel for Angular with alt for SEO and caption with link
+
+<br>
+<br>
+And soon more ...
+      </div>` }
     }, {
       src: '../assets/img/masoudta.png',
       x: '48vw',

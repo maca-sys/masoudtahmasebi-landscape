@@ -1,7 +1,7 @@
 <app-header [headerList]="header"></app-header>
 <div class="container">
-    <div class="carousel" *ngIf="slides.length">
-        <ng-container *ngFor="let slide of slides; let i = index">
+    <div class="carousel" *ngIf="portfolioList.length">
+        <ng-container *ngFor="let slide of portfolioList; let i = index">
             <picture [@slideAnimation]="animationType" swipe (next)="onNextClick()" (previous)="onPreviousClick()">
                 <source media="(min-width:650px)" srcset="{{slide.srcLarge? slide.srcLarge : slide.src}}">
                 <source media="(min-width:465px)" srcset="{{slide.srcMedium? slide.srcMedium : slide.src}}">
@@ -20,7 +20,7 @@
 
         <div class="control next selectable">
 
-            <div *ngFor="let slide of slides; let i = index">
+            <div *ngFor="let slide of portfolioList; let i = index">
 
 
                 <a *ngIf="slide.selectable" href="{{slide.selectable.link}}"
