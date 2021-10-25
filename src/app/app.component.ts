@@ -49,7 +49,7 @@ export class AppComponent {
       src: '../assets/img/1-1.jpg',
       srcLarge: '../assets/img/1-.jpg',
       srcMedium: '../assets/img/1-1.jpg',
-      x: '25vw',
+      x: '28vw',
       y: '17vh',
       alt: 'masoud tahmasebi',
       selectable: {
