@@ -36,6 +36,7 @@ Deploys as a static site; point your host (e.g. Cloudflare Pages) at the
 ## Suggested GitHub repo settings
 
 **Description:**
+
 > Personal portfolio of Max Tahmasebi — Tech Lead & Senior Full-Stack Engineer.
 > Angular 21, hand-written SCSS, WCAG 2.1 AA, AI-crawler friendly. Live at max-ta.com
 

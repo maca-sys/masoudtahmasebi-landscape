@@ -5,16 +5,18 @@
       <h1 id="hero-heading">Max Tahmasebi</h1>
       <p class="role">Tech Lead &amp; Senior Full-Stack Software Engineer</p>
       <p class="tagline">
-        12+ years building and running production software — TypeScript/Node.js, React,
-        C#/.NET, PHP/Symfony.
+        12+ years building and running production software — TypeScript/Node.js, React, C#/.NET,
+        PHP/Symfony.
       </p>
-      <p class="location">
-        Munich, Germany · open to international relocation (German/EU citizen)
-      </p>
+      <p class="location">Munich, Germany · open to international relocation (German/EU citizen)</p>
       <ul class="hero-links" aria-label="Profiles and contact">
         @for (link of links; track link.href) {
           <li>
-            <a [href]="link.href" [attr.rel]="link.icon === 'email' ? null : 'noopener'" [attr.target]="link.icon === 'email' ? null : '_blank'">
+            <a
+              [href]="link.href"
+              [attr.rel]="link.icon === 'email' ? null : 'noopener'"
+              [attr.target]="link.icon === 'email' ? null : '_blank'"
+            >
               <app-icon [name]="link.icon" />
               <span>{{ link.label }}</span>
             </a>

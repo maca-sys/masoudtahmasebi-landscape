@@ -2,13 +2,17 @@
   <div class="container contact-inner" appReveal>
     <h2 id="contact-heading" class="section-title">Contact</h2>
     <p class="pitch">
-      Open to Tech Lead and Senior Engineering roles worldwide. The fastest way to reach me
-      is email — I usually reply within a day.
+      Open to Tech Lead and Senior Engineering roles worldwide. The fastest way to reach me is email
+      — I usually reply within a day.
     </p>
     <ul class="contact-links">
       @for (link of links; track link.href) {
         <li>
-          <a [href]="link.href" [attr.rel]="link.icon === 'email' ? null : 'noopener'" [attr.target]="link.icon === 'email' ? null : '_blank'">
+          <a
+            [href]="link.href"
+            [attr.rel]="link.icon === 'email' ? null : 'noopener'"
+            [attr.target]="link.icon === 'email' ? null : '_blank'"
+          >
             <app-icon [name]="link.icon" />
             <span>{{ link.icon === 'email' ? 'mtahmasebi118@gmail.com' : link.label }}</span>
           </a>
