@@ -1,0 +1,124 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# One deploy at a time per ref; never cancel an in-flight production deploy.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write # preview URL comment
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # gitleaks scans history
+
+      - name: Scan for leaked secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck Worker
+        run: npm run typecheck:worker
+
+      - name: Unit tests
+        run: npm test
+        env:
+          CI: 'true'
+
+      - name: Build
+        run: npm run build
+
+      - name: Lighthouse CI (fail below 95 in any category)
+        run: npx --yes @lhci/cli@0.15.x autorun --config=lighthouserc.json
+
+      # ----- Preview deployments for PRs from this repo -----
+      - name: Deploy preview (Cloudflare Pages)
+        id: preview
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/masoud-tahmasebi-spa/browser --project-name=max-ta --branch=${{ github.head_ref }}
+
+      - name: Comment preview URL on PR
+        if: steps.preview.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.preview.outputs.deployment-url }}';
+            const marker = '<!-- preview-url -->';
+            const body = `${marker}\n🔍 **Preview deployment:** ${url}\n\n(Updated on every push to this PR.)`;
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo, issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ ...context.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: context.issue.number, body });
+            }
+
+      # ----- Production deployment on main -----
+      - name: Deploy site to production (Cloudflare Pages)
+        if: github.event_name == 'push'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/masoud-tahmasebi-spa/browser --project-name=max-ta --branch=main
+
+      - name: Deploy API Worker
+        if: github.event_name == 'push'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --config worker/wrangler.toml
+
+      - name: Smoke test production
+        if: github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          url="https://max-ta.com/"
+          echo "Waiting for the deployment to settle..."
+          sleep 15
+          status=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+          echo "HTTP status: $status"
+          [ "$status" = "200" ] || { echo "::error::Expected 200, got $status"; exit 1; }
+
+          headers=$(curl -sI "$url" | tr -d '\r' | tr '[:upper:]' '[:lower:]')
+          for h in \
+            "content-security-policy" \
+            "x-frame-options: deny" \
+            "x-content-type-options: nosniff" \
+            "referrer-policy: strict-origin-when-cross-origin" \
+            "permissions-policy" \
+            "strict-transport-security"; do
+            echo "$headers" | grep -q "$h" || { echo "::error::Missing security header: $h"; exit 1; }
+            echo "✓ $h"
+          done
+          echo "Smoke test passed."
