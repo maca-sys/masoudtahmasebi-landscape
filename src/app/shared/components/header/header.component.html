@@ -1,9 +1,0 @@
-<div class="toolbar" role="banner" *ngIf="headerList.length" >
-  <ng-container *ngFor="let headerItem of headerList; let i = index" class="wrap">
-    <div *ngIf="headerItem.enabled">
-      <a target="_blank" rel="noopener" [href]="headerItem.href" [title]="headerItem.title">
-        <div [innerHtml]="headerItem.icon | noSanitize"> </div>
-      </a>
-    </div>
-  </ng-container>
-</div>
