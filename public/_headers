@@ -1,0 +1,29 @@
+# Security headers for Cloudflare Pages — targeting A+ on securityheaders.com.
+# script-src is fully strict ('self', no inline): the theme-init script is an
+# external file and critical-CSS inlining is disabled in angular.json.
+# style-src needs 'unsafe-inline' because Angular injects component styles as
+# runtime <style> elements; on a static host there is no per-request nonce to
+# hand to ngCspNonce, and a hardcoded nonce would be security theater.
+
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+# Immutable caching for content-hashed build artifacts
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# theme-init.js is the one JS file without a content hash — short cache only
+/theme-init.js
+  ! Cache-Control
+  Cache-Control: public, max-age=3600
+
+/img/*
+  Cache-Control: public, max-age=604800
