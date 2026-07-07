@@ -1,27 +1,43 @@
-# MasoudTahmasebiSpa
+# max-ta.com
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
+Personal portfolio of **Max Tahmasebi** — Tech Lead & Senior Full-Stack
+Software Engineer in Munich. A single-page Angular app with smooth-scroll
+sections (hero, about, experience, projects, skills, contact), dark mode by
+default with a light toggle, hand-written SCSS on CSS custom properties, and
+no CSS framework, fonts, or trackers. Built to WCAG 2.1 AA, with full SEO
+metadata, schema.org Person markup, and an [`llms.txt`](public/llms.txt) so AI
+crawlers get an accurate professional summary. The first version of this site
+(Angular 12, also built by me) lives on in the git history.
 
-## Development server
+**Live: [max-ta.com](https://max-ta.com)**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![The site hero section in dark mode](docs/screenshot.png)
 
-## Code scaffolding
+## Tech stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Angular 21](https://angular.dev) — standalone components, signals, zoneless
+  change detection, `@if`/`@for` control flow
+- SCSS with CSS custom properties for dark/light theming (no framework)
+- Optimized WebP photography, system font stack, ~43 kB transferred JS
+- Vitest for unit tests
 
-## Build
+## Local development
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+npm start        # dev server at http://localhost:4200
+npm run build    # production build → dist/masoud-tahmasebi-spa/browser
+npm test         # unit tests (vitest)
+```
 
-## Running unit tests
+Deploys as a static site; point your host (e.g. Cloudflare Pages) at the
+`dist/masoud-tahmasebi-spa/browser` output directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Suggested GitHub repo settings
 
-## Running end-to-end tests
+**Description:**
+> Personal portfolio of Max Tahmasebi — Tech Lead & Senior Full-Stack Engineer.
+> Angular 21, hand-written SCSS, WCAG 2.1 AA, AI-crawler friendly. Live at max-ta.com
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Topics:** `portfolio` `angular` `typescript` `scss` `accessibility` `wcag`
+`seo` `cloudflare-pages` `personal-website`
