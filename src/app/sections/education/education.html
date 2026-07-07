@@ -1,0 +1,13 @@
+<section id="education" class="section" aria-labelledby="education-heading">
+  <div class="container">
+    <h2 id="education-heading" class="section-title">Education &amp; Certifications</h2>
+    <ul class="education-list">
+      @for (entry of entries; track entry.title) {
+        <li appReveal>
+          <h3>{{ entry.title }}</h3>
+          <p>{{ entry.institution }} · {{ entry.period }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

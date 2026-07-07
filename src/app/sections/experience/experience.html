@@ -1,0 +1,24 @@
+<section id="experience" class="section" aria-labelledby="experience-heading">
+  <div class="container">
+    <h2 id="experience-heading" class="section-title">Experience</h2>
+    <ol class="timeline">
+      @for (entry of entries; track entry.role + entry.period) {
+        <li class="timeline-entry" appReveal>
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <article>
+            <header>
+              <h3>{{ entry.role }}</h3>
+              <p class="meta">
+                <span class="company">{{ entry.company }}</span> · {{ entry.location }} ·
+                <span class="period">{{ entry.period }}</span>
+              </p>
+            </header>
+            @for (paragraph of entry.summary; track $index) {
+              <p class="summary">{{ paragraph }}</p>
+            }
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

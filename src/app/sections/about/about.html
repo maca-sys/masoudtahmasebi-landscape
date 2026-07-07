@@ -1,0 +1,43 @@
+<section id="about" class="section" aria-labelledby="about-heading">
+  <div class="container">
+    <h2 id="about-heading" class="section-title">About</h2>
+    <div class="about-grid" appReveal>
+      <div class="about-text">
+        <p>
+          I’m a Tech Lead with 12+ years of building and running production software,
+          currently leading a lean engineering team at DigitalSpital in Munich: daily dev
+          calls, sprint planning, code reviews, and customer meetings — while still spending
+          most of the week writing TypeScript/Node.js, React, and PHP/Symfony, with C#/.NET
+          and Java from earlier product work.
+        </p>
+        <p>
+          I’m happiest owning a system end to end: from architecture and OWASP-aligned
+          secure coding through Docker/Kubernetes deployments, Redis caching, and message
+          queues, down to fixing production when something breaks at the wrong hour.
+        </p>
+        <p>
+          MSc in Software Engineering. Fluent in English (IELTS 7.5), German (full
+          professional proficiency), and Persian (native).
+        </p>
+      </div>
+      <img
+        class="about-photo"
+        src="/img/masoud-about-460.webp"
+        srcset="/img/masoud-about-460.webp 460w, /img/masoud-about-920.webp 920w"
+        sizes="(max-width: 52rem) 60vw, 18rem"
+        width="460"
+        height="570"
+        alt="Max Tahmasebi photographed from behind, facing a dark background"
+        loading="lazy"
+      />
+    </div>
+    <ul class="stats" aria-label="Career highlights">
+      @for (stat of stats; track stat.label) {
+        <li class="stat-card" appReveal>
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
