@@ -35,8 +35,9 @@
       [attr.aria-pressed]="themeService.theme() === 'light'"
     >
       <span aria-hidden="true">{{ themeService.theme() === 'dark' ? '☀️' : '🌙' }}</span>
-      <span class="visually-hidden">Switch to
-        {{ themeService.theme() === 'dark' ? 'light' : 'dark' }} theme</span>
+      <span class="visually-hidden"
+        >Switch to {{ themeService.theme() === 'dark' ? 'light' : 'dark' }} theme</span
+      >
     </button>
   </div>
 </header>

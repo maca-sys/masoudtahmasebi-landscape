@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "prettier --check \"src/**/*.{ts,html,scss}\" \"worker/src/**/*.ts\" \"*.{json,md}\"",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\" \"worker/src/**/*.ts\" \"*.{json,md}\"",
+    "typecheck:worker": "tsc --noEmit -p worker/tsconfig.json"
   },
   "private": true,
   "dependencies": {
