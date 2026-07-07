@@ -80,20 +80,7 @@
   }
   </script>
 
-  <script>
-    // Apply the saved theme before first paint to avoid a flash. Dark is the default.
-    (function () {
-      var theme = 'dark';
-      try {
-        if (localStorage.getItem('theme') === 'light') {
-          theme = 'light';
-        }
-      } catch (e) {
-        // storage unavailable — keep the default
-      }
-      document.documentElement.dataset.theme = theme;
-    })();
-  </script>
+  <script src="/theme-init.js"></script>
 </head>
 <body>
   <app-root></app-root>
