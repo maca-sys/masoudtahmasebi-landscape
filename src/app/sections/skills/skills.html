@@ -1,0 +1,17 @@
+<section id="skills" class="section" aria-labelledby="skills-heading">
+  <div class="container">
+    <h2 id="skills-heading" class="section-title">Skills</h2>
+    <div class="skill-groups">
+      @for (group of groups; track group.title) {
+        <article class="skill-group" appReveal>
+          <h3>{{ group.title }}</h3>
+          <ul>
+            @for (skill of group.skills; track skill) {
+              <li>{{ skill }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

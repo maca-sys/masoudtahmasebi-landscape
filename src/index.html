@@ -1,13 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="utf-8">
-  <title>MasoudTahmasebiSpa</title>
+  <title>Max Tahmasebi — Tech Lead &amp; Senior Full-Stack Engineer</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="description" content="Max Tahmasebi is a Tech Lead and Senior Full-Stack Software Engineer in Munich, Germany with 12+ years of experience in TypeScript/Node.js, React, C#/.NET, and PHP/Symfony. Open to international relocation.">
+  <link rel="canonical" href="https://max-ta.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://max-ta.com/">
+  <meta property="og:title" content="Max Tahmasebi — Tech Lead &amp; Senior Full-Stack Engineer">
+  <meta property="og:description" content="12+ years building and running production software — TypeScript/Node.js, React, C#/.NET, PHP/Symfony. Based in Munich, open to international relocation.">
+  <meta property="og:image" content="https://max-ta.com/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Black-and-white portrait of Max Tahmasebi">
+  <meta property="og:site_name" content="Max Tahmasebi">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Max Tahmasebi — Tech Lead &amp; Senior Full-Stack Engineer">
+  <meta name="twitter:description" content="12+ years building and running production software — TypeScript/Node.js, React, C#/.NET, PHP/Symfony.">
+  <meta name="twitter:image" content="https://max-ta.com/img/og-image.jpg">
+
+  <meta name="theme-color" content="#0f1216">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff9933">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script>
+    // Apply the saved theme before first paint to avoid a flash. Dark is the default.
+    (function () {
+      var theme = 'dark';
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          theme = 'light';
+        }
+      } catch (e) {
+        // storage unavailable — keep the default
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>
+  <noscript>
+    <p style="padding:1rem;font-family:system-ui,sans-serif">
+      Max Tahmasebi — Tech Lead &amp; Senior Full-Stack Software Engineer, Munich, Germany.
+      This site needs JavaScript; you can reach me at
+      <a href="mailto:mtahmasebi118@gmail.com">mtahmasebi118@gmail.com</a>,
+      <a href="https://github.com/maca-sys">GitHub</a>, or
+      <a href="https://www.linkedin.com/in/masoudtahmasebi/">LinkedIn</a>.
+    </p>
+  </noscript>
 </body>
 </html>

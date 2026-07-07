@@ -1,0 +1,37 @@
+<section class="hero section" aria-labelledby="hero-heading">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="kicker">Hello, I’m</p>
+      <h1 id="hero-heading">Max Tahmasebi</h1>
+      <p class="role">Tech Lead &amp; Senior Full-Stack Software Engineer</p>
+      <p class="tagline">
+        12+ years building and running production software — TypeScript/Node.js, React,
+        C#/.NET, PHP/Symfony.
+      </p>
+      <p class="location">
+        Munich, Germany · open to international relocation (German/EU citizen)
+      </p>
+      <ul class="hero-links" aria-label="Profiles and contact">
+        @for (link of links; track link.href) {
+          <li>
+            <a [href]="link.href" [attr.rel]="link.icon === 'email' ? null : 'noopener'" [attr.target]="link.icon === 'email' ? null : '_blank'">
+              <app-icon [name]="link.icon" />
+              <span>{{ link.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+    <div class="hero-photo">
+      <img
+        src="/img/masoud-hero-480.webp"
+        srcset="/img/masoud-hero-480.webp 480w, /img/masoud-hero-960.webp 960w"
+        sizes="(max-width: 52rem) 70vw, 24rem"
+        width="480"
+        height="528"
+        alt="Black-and-white portrait of Max Tahmasebi wearing aviator sunglasses"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
