@@ -1,0 +1,81 @@
+# Max Tahmasebi
+
+> Tech Lead & Senior Full-Stack Software Engineer in Munich, Germany, with 12+
+> years of building and running production software. TypeScript/Node.js, React,
+> C#/.NET, PHP/Symfony. German/EU citizen, open to international relocation.
+> Contact: mtahmasebi118@gmail.com · https://github.com/maca-sys ·
+> https://www.linkedin.com/in/masoudtahmasebi/
+
+This file summarizes the content of https://max-ta.com/ (a single-page
+portfolio) for language models and AI agents. The site itself carries the same
+information with schema.org Person markup. Also known as Masoud Tahmasebi.
+
+## Current role
+
+Head of Development & Operations at DigitalSpital GmbH, Munich (Jan 2023 –
+present). Hands-on Tech Lead for healthcare and mobility platforms: leads the
+engineering team (daily dev calls, sprint planning, code reviews, architecture
+decisions) while writing production code most of the week. Built a CMS + REST
+content API for ADAC in PHP 8.3/Symfony on PostgreSQL, shipped as Docker images
+via GitHub Actions to AWS ECR. Maintains CI/CD pipelines deploying
+Docker/Kubernetes workloads to Azure, AWS, and Exoscale; operates ~12
+production Ubuntu servers with Terraform and Sentry. Built an internal AI agent
+connected to Jira and Confluence that turns requests into ready-to-work
+tickets. Disaster-recovery plans reduced potential downtime by 40%.
+
+## Earlier experience
+
+- Senior Software Engineer, DigitalSpital GmbH, Munich (2020–2023): cross-platform
+  station and fleet-management platforms for ADAC across web, iOS, and Android
+  (Angular, Ionic, Capacitor) — reservations, payments, digital signatures,
+  payment-terminal integration; Stack Overflow-style internal knowledge platform
+  (.NET Core + Angular) for one of Germany's largest companies.
+- Senior Full-Stack Engineer, Demis Co., Isfahan (2018–2020): designed AcoreX, a
+  modular .NET Core + Angular framework used as the boilerplate for three
+  commercial products.
+- Technical Development Manager, Timeplicity, Isfahan (2018–2019): took the
+  Safetyminder OHS product to launch and +43% profitability.
+- Full-Stack Developer, Media Sanat Sepahan, Isfahan (2015–2018): web apps and
+  online shops in Node.js and C#.
+- Full-Stack Developer, Iras Co., Isfahan (2014–2015): Java EE business
+  application still in production today.
+
+## Selected projects
+
+- PIM data-integration platform: Node.js/TypeScript toolset syncing 91,000+
+  products from Novomind iPIM into Shopware 6; full catalog in 3–8 minutes at
+  ~150 concurrent API requests under ~200 MB memory via disk-streamed JSONL.
+- Web accessibility auditing platform: Next.js 15 + Puppeteer + IBM
+  accessibility-checker for automated WCAG audits, with AI-assisted analysis,
+  multi-page crawling, RBAC, PDF export, and compliance dashboards.
+- AI crawler analytics platform: Fastify 5 + TypeScript + Prisma/MySQL API with
+  a React dashboard tracking bot crawl activity from Nginx logs, GDPR-compliant.
+- Redis production architecture: caching, session, and distributed-locking
+  layers across three production instances; zero-data-loss migration fix.
+- Live search migration: moved product search to OpenSearch under a hard
+  deadline; message-queue workers processed a ~260k-message backlog.
+- Commercial Shopware 6 plugins: AI shopping chatbot (OpenAI function calling),
+  merchant margin calculator, AI product-feed optimiser.
+
+## Skills
+
+TypeScript, JavaScript, React/Next.js, Angular, Vue/Nuxt, Node.js (Express,
+Fastify), C#/.NET, PHP/Symfony, Shopware 6, Java/Spring, React Native/Ionic;
+PostgreSQL, MySQL, MongoDB, Redis, Prisma, OpenSearch/Elasticsearch; Docker,
+Kubernetes, Terraform, AWS, Azure (AZ-900 certified), GitLab CI, GitHub
+Actions, Linux, Sentry; REST API design, distributed systems, event-driven
+architectures, OWASP secure coding, GDPR-aware engineering, AI-assisted
+development; Agile Scrum/Kanban leadership, mentoring, stakeholder reporting.
+
+## Education
+
+- MSc Software Engineering, University of Isfahan (2015–2017)
+- BSc Industrial Engineering, Golpayegan University of Technology (2011–2015)
+- Publication: "An efficient model for vehicular cloud computing with
+  prioritizing computing resources", Peer-to-Peer Networking and Applications
+  (Springer), 2018
+
+## Languages
+
+English (fluent, IELTS 7.5), German (full professional proficiency), Persian
+(native).
