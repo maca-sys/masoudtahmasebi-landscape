@@ -49,3 +49,10 @@ Thumbs.db
 
 # Angular cache
 /.angular/cache
+
+# Terraform
+infra/.terraform/
+*.tfstate
+*.tfstate.*
+infra/terraform.tfvars
+crash.log

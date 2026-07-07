@@ -1,0 +1,10 @@
+# Copy to terraform.tfvars to override the committed defaults.
+# NEVER put the API token here — it is read from the CLOUDFLARE_API_TOKEN
+# environment variable only.
+
+# account_id         = "your-cloudflare-account-id"
+# zone_id            = "your-zone-id"
+# domain             = "max-ta.com"
+# pages_project_name = "max-ta"
+# production_branch  = "main"
+# worker_name        = "max-ta-api"
