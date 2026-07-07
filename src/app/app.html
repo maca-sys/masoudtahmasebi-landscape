@@ -14,6 +14,11 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p>© 2026 Max Tahmasebi · Built with Angular, hand-written SCSS, and no trackers.</p>
+    <p>
+      © 2026 Max Tahmasebi · Built with Angular, hand-written SCSS, and no trackers.
+      @if (visits(); as total) {
+        <span class="visits">· {{ total | number }} visits counted anonymously</span>
+      }
+    </p>
   </div>
 </footer>
