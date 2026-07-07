@@ -1,6 +1,6 @@
 {
-    "name": "MasoudTa",
-    "short_name": "MasoudTa",
+    "name": "Max Tahmasebi — Tech Lead & Senior Full-Stack Engineer",
+    "short_name": "Max Tahmasebi",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    "theme_color": "#0f1216",
+    "background_color": "#0f1216",
+    "display": "browser",
+    "start_url": "/"
 }
