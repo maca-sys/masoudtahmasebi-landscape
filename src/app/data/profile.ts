@@ -34,10 +34,15 @@ export interface EducationEntry {
   period: string;
 }
 
+// Assembled at runtime via join() — which esbuild does not constant-fold —
+// so the plain address never appears verbatim in the shipped HTML or JS for
+// spam harvesters that grep static assets. It only exists in the live DOM.
+export const EMAIL = ['mtahmasebi118', 'gmail.com'].join('@');
+
 export const SOCIAL_LINKS: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/maca-sys', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/masoudtahmasebi/', icon: 'linkedin' },
-  { label: 'Email', href: 'mailto:mtahmasebi118@gmail.com', icon: 'email' },
+  { label: 'Email', href: 'mailto:' + EMAIL, icon: 'email' },
 ];
 
 export const STATS: Stat[] = [
