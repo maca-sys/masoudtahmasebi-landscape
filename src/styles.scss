@@ -176,6 +176,21 @@ img {
   translate: 0 0;
 }
 
+/* Tighter vertical rhythm on small screens — the same content, less thumb travel */
+@media (max-width: 44rem) {
+  .section {
+    padding-block: 2.75rem;
+  }
+
+  .section-title {
+    margin-bottom: 1.25rem;
+  }
+
+  body {
+    font-size: 0.97rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

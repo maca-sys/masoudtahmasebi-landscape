@@ -50,7 +50,8 @@ h1 {
   padding: 0;
 }
 
-.hero-links a {
+.hero-links a,
+.hero-links button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -59,11 +60,14 @@ h1 {
   border-radius: 999px;
   color: var(--text);
   text-decoration: none;
+  font: inherit;
   font-weight: 500;
   background: var(--surface);
+  cursor: pointer;
 }
 
-.hero-links a:hover {
+.hero-links a:hover,
+.hero-links button:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
