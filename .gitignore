@@ -56,3 +56,6 @@ infra/.terraform/
 *.tfstate.*
 infra/terraform.tfvars
 crash.log
+
+# Unprocessed photo originals (kept locally, not deployed)
+/newimg-originals/
