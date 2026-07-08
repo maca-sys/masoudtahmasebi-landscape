@@ -11,8 +11,8 @@ workers_dev = false
 
 [[kv_namespaces]]
 binding = "VISITS"
-# Paste the value of `terraform output kv_namespace_id` after the first apply.
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+# Value of `terraform output kv_namespace_id` (namespace IDs are not secrets).
+id = "f27dbde868c840ecb6ea7340724a5df3"
 
 [observability]
 enabled = true

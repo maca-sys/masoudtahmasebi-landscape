@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SOCIAL_LINKS } from '../../data/profile';
+import { EMAIL, SOCIAL_LINKS } from '../../data/profile';
 import { Icon } from '../../shared/icon';
 import { RevealDirective } from '../../reveal.directive';
 
@@ -12,4 +12,5 @@ import { RevealDirective } from '../../reveal.directive';
 })
 export class Contact {
   protected readonly links = SOCIAL_LINKS;
+  protected readonly email = EMAIL;
 }

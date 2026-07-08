@@ -14,7 +14,7 @@
             [attr.target]="link.icon === 'email' ? null : '_blank'"
           >
             <app-icon [name]="link.icon" />
-            <span>{{ link.icon === 'email' ? 'mtahmasebi118@gmail.com' : link.label }}</span>
+            <span>{{ link.icon === 'email' ? email : link.label }}</span>
           </a>
         </li>
       }
