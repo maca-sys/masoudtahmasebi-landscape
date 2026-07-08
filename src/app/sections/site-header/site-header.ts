@@ -19,6 +19,9 @@ interface NavItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './site-header.html',
   styleUrl: './site-header.scss',
+  host: {
+    '(document:keydown.escape)': 'closeMenu()',
+  },
 })
 export class SiteHeader implements OnInit, OnDestroy {
   protected readonly themeService = inject(ThemeService);

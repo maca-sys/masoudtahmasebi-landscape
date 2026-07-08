@@ -9,6 +9,7 @@
  */
 import {
   EDUCATION,
+  EMAIL,
   EXPERIENCE,
   PROJECTS,
   SKILL_GROUPS,
@@ -24,6 +25,7 @@ const RESUME = {
   name: 'Max Tahmasebi',
   title: 'Tech Lead & Senior Full-Stack Software Engineer',
   location: 'Munich, Germany',
+  email: EMAIL,
   links: SOCIAL_LINKS,
   highlights: STATS,
   experience: EXPERIENCE,
