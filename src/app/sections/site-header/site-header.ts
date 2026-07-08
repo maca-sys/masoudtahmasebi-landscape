@@ -34,33 +34,57 @@ export class SiteHeader implements OnInit, OnDestroy {
   protected readonly menuOpen = signal(false);
   protected readonly activeSection = signal('');
 
-  private observer?: IntersectionObserver;
+  private rafPending = false;
 
-  ngOnInit(): void {
-    if (!('IntersectionObserver' in window)) {
+  // Scroll-spy via scroll position rather than IntersectionObserver: short
+  // sections at the end of the page (Education, Contact) can never reach an
+  // observer's viewport-middle band, so the last nav item would never win.
+  private readonly onScroll = (): void => {
+    if (this.rafPending) {
       return;
     }
-    // Scroll-spy: mark the nav link of the section currently in view.
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            this.activeSection.set(entry.target.id);
-          }
-        }
-      },
-      { rootMargin: '-40% 0px -55% 0px' },
-    );
-    for (const item of this.navItems) {
-      const el = document.getElementById(item.id);
-      if (el) {
-        this.observer.observe(el);
-      }
-    }
+    this.rafPending = true;
+    requestAnimationFrame(() => {
+      this.rafPending = false;
+      this.updateActiveSection();
+    });
+  };
+
+  ngOnInit(): void {
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll, { passive: true });
+    // recheck after the sections below have rendered and laid out
+    requestAnimationFrame(() => this.updateActiveSection());
   }
 
   ngOnDestroy(): void {
-    this.observer?.disconnect();
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+  }
+
+  private updateActiveSection(): void {
+    const doc = document.documentElement;
+
+    // Scrolled to (or past) the bottom of a scrollable page: the last section
+    // is active even if it is too short to cross the activation line. The
+    // scrollable check matters at init, before the sections have laid out.
+    const scrollable = doc.scrollHeight > window.innerHeight;
+    if (scrollable && window.innerHeight + window.scrollY >= doc.scrollHeight - 4) {
+      this.activeSection.set(this.navItems[this.navItems.length - 1].id);
+      return;
+    }
+
+    // Otherwise: the last section whose top has crossed a line 30% down the
+    // viewport is active; above the first section nothing is highlighted.
+    const activationLine = window.innerHeight * 0.3;
+    let active = '';
+    for (const item of this.navItems) {
+      const el = document.getElementById(item.id);
+      if (el && el.getBoundingClientRect().top <= activationLine) {
+        active = item.id;
+      }
+    }
+    this.activeSection.set(active);
   }
 
   protected toggleMenu(): void {
