@@ -2,7 +2,7 @@
 
 > Tech Lead & Senior Full-Stack Software Engineer in Munich, Germany, with 12+
 > years of building and running production software. TypeScript/Node.js, React,
-> C#/.NET, PHP/Symfony. German/EU citizen, open to international relocation.
+> C#/.NET, PHP/Symfony.
 > Contact: mtahmasebi118@gmail.com · https://github.com/maca-sys ·
 > https://www.linkedin.com/in/masoudtahmasebi/
 

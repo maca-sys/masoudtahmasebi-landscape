@@ -24,7 +24,6 @@ const RESUME = {
   name: 'Max Tahmasebi',
   title: 'Tech Lead & Senior Full-Stack Software Engineer',
   location: 'Munich, Germany',
-  relocation: 'Open to international relocation (German/EU citizen)',
   links: SOCIAL_LINKS,
   highlights: STATS,
   experience: EXPERIENCE,
