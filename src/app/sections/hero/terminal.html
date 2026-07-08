@@ -1,0 +1,17 @@
+<!-- Animation is decorative for screen readers; the info lives in the visually-hidden line. -->
+<div class="terminal" aria-hidden="true">
+  <div class="terminal-bar">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">max@ta: ~</span>
+  </div>
+  <pre
+    class="terminal-body"
+  ><span class="prompt">$ </span><span class="command">{{ cmd() }}</span>@if (out()) {
+<span class="output">{{ out() }}</span>}<span class="cursor" [class.blinking]="!done()">▍</span></pre>
+</div>
+<p class="visually-hidden">
+  Live demo: running curl against https://max-ta.com/api/resume returns my resume as JSON from a
+  Cloudflare Worker.
+</p>
